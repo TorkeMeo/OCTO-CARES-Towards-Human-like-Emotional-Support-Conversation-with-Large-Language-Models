@@ -1,0 +1,10 @@
+# Install the matching CUDA build of PyTorch separately on the GPU machine.
+# Compatible ranges, not a claim of the historical server's exact lockfile.
+numpy>=1.24,<3
+openai>=1.30,<3
+torch>=2.5,<3
+transformers>=4.51,<5
+peft>=0.15,<1
+safetensors>=0.4,<1
+accelerate>=1.0,<2
+# Optional BGE semantic variant only: pip install FlagEmbedding

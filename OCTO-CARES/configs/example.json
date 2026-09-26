@@ -1,0 +1,41 @@
+{
+  "output_root": "outputs/paper_run",
+  "gpu_ids": [0, 1, 2, 3],
+  "qwen_model": "models/Qwen3-8B",
+  "adapter_root": "outputs/adapters",
+  "data": {
+    "reddit1600_source": "data/private/reddit1600_source.json",
+    "reddit1600_labeled": "data/private/reddit1600_labeled.json",
+    "supplement_source": "data/private/reddit1060_source.json",
+    "reddit1053_labeled": "data/private/reddit1053_labeled.json",
+    "escot": "data/private/escot_test.json"
+  },
+  "training": {"variant": "stable", "data_split": "all"},
+  "vector_count": 1053,
+  "escot_count": 341,
+  "limit": 0,
+  "annotation_limit": 0,
+  "summary": {
+    "model": "gpt-oss-120b",
+    "model_path": "models/gpt-oss-120b",
+    "base_url": "http://127.0.0.1:8090/v1",
+    "port": 8090,
+    "gpu_ids": [0, 1, 2, 3],
+    "client_workers": 2
+  },
+  "judges": [
+    {"name": "glm4_32b", "model_path": "models/GLM-4-32B-0414", "base_url": "http://127.0.0.1:8101/v1", "port": 8101},
+    {"name": "gemma3_27b", "model_path": "models/gemma-3-27b-it", "base_url": "http://127.0.0.1:8102/v1", "port": 8102},
+    {"name": "qwen35_27b", "model_path": "models/Qwen3.5-27B", "base_url": "http://127.0.0.1:8103/v1", "port": 8103}
+  ],
+  "server": {
+    "image": "vllm/vllm-openai:v0.29.0",
+    "judge_gpu_ids": [0, 1],
+    "gpu_idle_max_mib": 1024,
+    "gpu_poll_seconds": 30,
+    "idle_checks": 2,
+    "max_model_len": 32768,
+    "gpu_memory_utilization": 0.85,
+    "startup_timeout": 1200
+  }
+}
